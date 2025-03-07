@@ -1,12 +1,12 @@
-review result assignment
+review result assignment.
 
-tech-stack 
+use tech-stack 
   - languege : typescript languege
-  - back-end : express + prisma orm (db: mysql)
+  - back-end : express + prisma(orm) + jest(testing) + logger(winston)
   - front-end : next-js + ant_ui + chartjs + tailwind css
   - database : mysql
 
-Web application
+review Web application interface.
 
 ![screenshot](./review/table_member_asc.png)
 ![screenshot](./review/table_members_desc.png)
