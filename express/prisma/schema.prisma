@@ -1,0 +1,17 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Member {
+  id    Int @id @default (autoincrement())
+  name  String
+  lastname String
+  birthday DateTime
+  image String
+  updatedAt DateTime
+}
