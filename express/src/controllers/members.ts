@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { buildError, buildResult } from '../pkg/buildRespone';
 import { z, ZodError } from "zod"
+import logger from "../util/logger"
 
 import { PrismaCustomClient } from '../lib/prisma';
 
@@ -101,6 +102,7 @@ export class MemberController {
         });
 
         res.status(201).json(buildResult(result,201));
+        logger.warn(`created member_id:${result.id}`, result)
         return
     };
 
@@ -138,6 +140,7 @@ export class MemberController {
         });
 
         res.json(buildResult(result));
+        logger.warn(`updated member_id:${result.id}`, result)
         return
     };
 
@@ -155,6 +158,7 @@ export class MemberController {
         })
 
         res.status(204).json(buildResult(null, 204));
+        logger.warn(`deleted member_id:${memberId}`)
         return
     }
 }

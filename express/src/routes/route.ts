@@ -2,8 +2,7 @@ import { Router } from "express";
 import { MemberController } from "../controllers/members"
 import prisma from "../lib/prisma";
 
-
-
+import logger from "../util/logger"
 
 const router = Router();
 const memberController = new MemberController(prisma);
@@ -17,10 +16,9 @@ export const errorHandler = (err: Error, req: Request, res: Response, next: Next
 };
 
 export const requestLogger = (req: Request, res: Response, next: NextFunction) => {
-    console.log(`${req.method} ${req.path}`);
-    next();
+    logger.info(`${req.method} ${req.path}`);
+    next()
 };
-
 
 router.use(requestLogger);
 router.use(errorHandler);
@@ -32,4 +30,3 @@ router.put('/members/:memberId', memberController.updateMember)
 router.delete('/members/:memberId', memberController.deleteMember)
 
 export default router;
-
